@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/command_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -32,6 +32,7 @@ class Ui_CommandUI(object):
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
         self.label_current_value = QtWidgets.QLabel(CommandUI)
+        self.label_current_value.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.label_current_value.setObjectName("label_current_value")
         self.horizontalLayout_2.addWidget(self.label_current_value)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -42,7 +43,20 @@ class Ui_CommandUI(object):
         self.comboBox = QtWidgets.QComboBox(CommandUI)
         self.comboBox.setObjectName("comboBox")
         self.horizontalLayout_2.addWidget(self.comboBox)
-        self.write_button = QtWidgets.QPushButton(CommandUI)
+        self.toolButton = QtWidgets.QToolButton(CommandUI)
+        self.toolButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("refresh.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton.setIcon(icon)
+        self.toolButton.setIconSize(QtCore.QSize(25, 25))
+        self.toolButton.setObjectName("toolButton")
+        self.horizontalLayout_2.addWidget(self.toolButton)
+        self.write_button = QtWidgets.QToolButton(CommandUI)
+        self.write_button.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("write.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.write_button.setIcon(icon1)
+        self.write_button.setIconSize(QtCore.QSize(25, 25))
         self.write_button.setObjectName("write_button")
         self.horizontalLayout_2.addWidget(self.write_button)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
@@ -57,5 +71,4 @@ class Ui_CommandUI(object):
         self.label.setText(_translate("CommandUI", "current value:"))
         self.label_current_value.setText(_translate("CommandUI", "UNK."))
         self.label_3.setText(_translate("CommandUI", "possible values:"))
-        self.write_button.setText(_translate("CommandUI", "Write"))
 

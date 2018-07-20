@@ -109,6 +109,29 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::VLine</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="read_button">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Read all values</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item>
@@ -126,7 +149,7 @@
           <x>0</x>
           <y>0</y>
           <width>779</width>
-          <height>281</height>
+          <height>297</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -210,7 +233,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>28</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>

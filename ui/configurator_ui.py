@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui/configurator_ui.ui'
 #
-# Created by: PyQt5 UI code generator 5.5.1
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -71,6 +71,19 @@ class Ui_MainWindow(object):
         self.atw_button.setSizePolicy(sizePolicy)
         self.atw_button.setObjectName("atw_button")
         self.horizontalLayout_2.addWidget(self.atw_button)
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setFrameShape(QtWidgets.QFrame.VLine)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_2.addWidget(self.frame)
+        self.read_button = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.read_button.sizePolicy().hasHeightForWidth())
+        self.read_button.setSizePolicy(sizePolicy)
+        self.read_button.setObjectName("read_button")
+        self.horizontalLayout_2.addWidget(self.read_button)
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
         self.splitter = QtWidgets.QSplitter(self.centralwidget)
         self.splitter.setOrientation(QtCore.Qt.Vertical)
@@ -79,7 +92,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 779, 281))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 779, 297))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -89,6 +102,7 @@ class Ui_MainWindow(object):
         self.verticalLayoutWidget = QtWidgets.QWidget(self.splitter)
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -117,7 +131,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.splitter)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 799, 28))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 799, 25))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -138,6 +152,7 @@ class Ui_MainWindow(object):
         self.device_label.setText(_translate("MainWindow", "<device name>"))
         self.at_button.setText(_translate("MainWindow", "AT"))
         self.atw_button.setText(_translate("MainWindow", "ATW"))
+        self.read_button.setText(_translate("MainWindow", "Read all values"))
         self.crlf_comboBox.setItemText(0, _translate("MainWindow", "None"))
         self.crlf_comboBox.setItemText(1, _translate("MainWindow", "CR"))
         self.crlf_comboBox.setItemText(2, _translate("MainWindow", "LF"))

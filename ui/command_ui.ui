@@ -44,6 +44,9 @@
      </item>
      <item>
       <widget class="QLabel" name="label_current_value">
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
        <property name="text">
         <string>UNK.</string>
        </property>
@@ -73,9 +76,36 @@
       <widget class="QComboBox" name="comboBox"/>
      </item>
      <item>
-      <widget class="QPushButton" name="write_button">
+      <widget class="QToolButton" name="toolButton">
        <property name="text">
-        <string>Write</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>refresh.svg</normaloff>refresh.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="write_button">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>write.svg</normaloff>write.svg</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>25</width>
+         <height>25</height>
+        </size>
        </property>
       </widget>
      </item>
