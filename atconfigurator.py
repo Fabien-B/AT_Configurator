@@ -6,6 +6,7 @@ import serial
 from command_widget import CommandWidget
 from ui.configurator_ui import Ui_MainWindow
 from serial_monitor import SerialMonitor
+import traceback
 
 class ATConfigurator(Ui_MainWindow):
   
@@ -61,7 +62,12 @@ class ATConfigurator(Ui_MainWindow):
     
   def parse(self, filename):
     with open(filename, 'r') as f:
-      data = json.load(f)
+      try:
+        data = json.load(f)
+      except json.decoder.JSONDecodeError:
+        print("[ERROR] JSON file not valid, see exception below.")
+        traceback.print_exc()
+        exit(-1)
       for com in data["commands"]:
         command = Command()
         command.title = com["title"]
