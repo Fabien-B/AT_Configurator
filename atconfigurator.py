@@ -22,6 +22,8 @@ class ATConfigurator(Ui_MainWindow):
     self.add_AT_ui()
     self.at_button.clicked.connect(self.at_ping)
     self.atw_button.clicked.connect(self.at_write)
+    self.serial_lineEdit.returnPressed.connect(self.write_line_to_serial)
+    self.crlf_comboBox.currentIndexChanged.connect(self.serial_monitor.change_ending)
   
   def add_AT_ui(self):
     for command in self.commands:
@@ -36,6 +38,10 @@ class ATConfigurator(Ui_MainWindow):
   def at_write(self):
     print("write")
     self.serial_monitor.write("AT&W\r\n")
+  def write_line_to_serial(self):
+    text = self.serial_lineEdit.text()
+    self.serial_lineEdit.clear()
+    self.serial_monitor.write_ending(text)
     
   def parse(self, filename):
     with open(filename, 'r') as f:

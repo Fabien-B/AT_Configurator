@@ -7,19 +7,17 @@ class SerialMonitor():
     self.serial_textEdit = serial_textEdit
   
   def write(self, string):
-    #ser.write(string.encode())
-    print(string)
     self.serial_textEdit.append(">>>" + string)  #TODO faire en bien
   
   def write_ending(self, string):
     self.write(string+self.ending)
   
-  def change_ending(index):
+  def change_ending(self, index):
     if index == 0:
-      ending = ""
+      self.ending = ""
     elif index == 1:
-      ending = "\r"
+      self.ending = "\r"
     elif index == 2:
-      ending = "\n"
+      self.ending = "\n"
     elif index == 3:
-      ending = "\r\n"
+      self.ending = "\r\n"
