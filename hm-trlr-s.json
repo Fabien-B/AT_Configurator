@@ -7,12 +7,18 @@
       "AT_read": "AT+SPR=?\r\n",
       "AT_write": "AT+SPR={}\r\n",
       "parameter": [
-        {"value": 0, "description": "1200bps"},
-        {"value": 1, "description": "2400bps"},
-        {"value": 2, "description": "4800bps"},
-        {"value": 3, "description": "9600bps"}
+        {"value": "0", "description": "1200bps"},
+        {"value": "1", "description": "2400bps"},
+        {"value": "2", "description": "4800bps"},
+        {"value": "3", "description": "9600bps"},
+        {"value": "4", "description": "14400bps"},
+        {"value": "5", "description": "19200bps"},
+        {"value": "6", "description": "38400bps"},
+        {"value": "7", "description": "56000bps"},
+        {"value": "8", "description": "57600bps"},
+        {"value": "9", "description": "115200bps"}
       ],
-      "default": 0
+      "default": "0"
     },
     {
       "title": "Transmit power",
@@ -20,12 +26,48 @@
       "AT_read": "AT+POWER=?\r\n",
       "AT_write": "AT+POWER={}\r\n",
       "parameter": [
-        {"value": 0, "description": "20dbm"},
-        {"value": 1, "description": "17dbm"},
-        {"value": 2, "description": "15dbm"},
-        {"value": 3, "description": "10dbm"}
+        {"value": "0", "description": "20dbm"},
+        {"value": "1", "description": "17dbm"},
+        {"value": "2", "description": "15dbm"},
+        {"value": "3", "description": "10dbm"}
       ],
-      "default": 0
+      "default": "0"
+    },
+    {
+      "title": "Channel select",
+      "description": "Change channel. 16 channels are possible, modules must share the same channel.",
+      "AT_read": "AT+CS=?\r\n",
+      "AT_write": "AT+CS={}\r\n",
+      "parameter": [
+        {"value": "0", "description": "channel 0"},
+        {"value": "1", "description": "channel 1"},
+        {"value": "2", "description": "channel 2"},
+        {"value": "3", "description": "channel 3"},
+        {"value": "4", "description": "channel 4"},
+        {"value": "5", "description": "channel 5"},
+        {"value": "6", "description": "channel 6"},
+        {"value": "7", "description": "channel 7"},
+        {"value": "8", "description": "channel 8"},
+        {"value": "9", "description": "channel 9"},
+        {"value": "A", "description": "channel A"},
+        {"value": "B", "description": "channel B"},
+        {"value": "C", "description": "channel C"},
+        {"value": "D", "description": "channel D"},
+        {"value": "E", "description": "channel E"},
+        {"value": "F", "description": "channel F"}
+      ],
+      "default": "0"
+    },
+    {
+      "title": "CRC enabled/disabled",
+      "description": "In LORA mode, enable or disable CRC function.",
+      "AT_read": "AT+LRCRC=?\r\n",
+      "AT_write": "AT+LRCRC={}\r\n",
+      "parameter": [
+        {"value": "0", "description": "disable CRC function"},
+        {"value": "1", "description": "enable CRC function"}
+      ],
+      "default": "0"
     }
   ]
 }
