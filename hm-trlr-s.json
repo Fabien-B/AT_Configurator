@@ -1,0 +1,31 @@
+{
+  "name": "HM-TRLR-S-433",
+  "commands": [
+    {
+      "title": "Set UART BaudRate",
+      "description": "controller communication speed. Take effect immediately.",
+      "AT_read": "AT+SPR=?\r\n",
+      "AT_write": "AT+SPR={}\r\n",
+      "parameter": [
+        {"value": 0, "description": "1200bps"},
+        {"value": 1, "description": "2400bps"},
+        {"value": 2, "description": "4800bps"},
+        {"value": 3, "description": "9600bps"}
+      ],
+      "default": 0
+    },
+    {
+      "title": "Transmit power",
+      "description": "Set transmit power of the module.",
+      "AT_read": "AT+POWER=?\r\n",
+      "AT_write": "AT+POWER={}\r\n",
+      "parameter": [
+        {"value": 0, "description": "20dbm"},
+        {"value": 1, "description": "17dbm"},
+        {"value": 2, "description": "15dbm"},
+        {"value": 3, "description": "10dbm"}
+      ],
+      "default": 0
+    }
+  ]
+}
