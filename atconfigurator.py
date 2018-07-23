@@ -52,12 +52,10 @@ class ATConfigurator(Ui_MainWindow):
       self.verticalLayout.insertWidget(self.verticalLayout.count()-1, command_widget)
 
   def at_ping(self):
-    print("ping")
     self.serial_monitor.write("AT\r\n")
       
       
   def at_write(self):
-    print("write")
     self.serial_monitor.write("AT&W\r\n")
   
   def write_line_to_serial(self):
