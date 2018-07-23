@@ -33,7 +33,12 @@ class CommandWidget(QtWidgets.QWidget):
   def update_value(self, *args):
     try:
       value = args[0]
-      self.ui.label_current_value.setText(value) #TODO : get description instead of value
+      description = ""
+      for param in self.command.params:
+        if param.value == value:
+          description = param.description
+      text = description if description else value
+      self.ui.label_current_value.setText(description)
     except IndexError as e:
       print(len(args), e)
       

@@ -19,6 +19,7 @@ class ATConfigurator(Ui_MainWindow):
     self.serial_history = [""]    # contains the history of the hand typed commands
     self.index_history = 0
     self.serial_connected = False
+    self.command_widgets = []
   
   def built(self):
     self.serial_monitor = SerialMonitor(self.serial_textEdit)
@@ -49,6 +50,7 @@ class ATConfigurator(Ui_MainWindow):
   def add_AT_ui(self):
     for command in self.commands:
       command_widget = CommandWidget(command, self.serial_monitor)
+      self.command_widgets.append(command_widget)
       self.verticalLayout.insertWidget(self.verticalLayout.count()-1, command_widget)
 
   def at_ping(self):
