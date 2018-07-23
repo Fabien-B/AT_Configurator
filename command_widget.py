@@ -32,7 +32,7 @@ class CommandWidget(QtWidgets.QWidget):
   
   def update_value(self, *args):
     try:
-      value = args[0]
+      value = args[0].strip()
       description = ""
       for param in self.command.params:
         if param.value == value:
