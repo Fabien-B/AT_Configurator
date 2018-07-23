@@ -33,6 +33,7 @@ class ATConfigurator(Ui_MainWindow):
     self.serial_lineEdit.installEventFilter(self.filter)
     self.connect_button.clicked.connect(self.connect_serial)
     self.read_button.clicked.connect(self.at_read_all)
+    self.set_enabled_buttons(False)
   
   def connect_serial(self):
     if self.serial_connected is False:
@@ -42,11 +43,13 @@ class ATConfigurator(Ui_MainWindow):
           self.serial_monitor.connect(port, bauds)
           self.serial_connected = True
           self.connect_button.setText("Disconnect")
+          self.set_enabled_buttons(True)
         except serial.serialutil.SerialException as e:
           print(e)
     else:
       self.serial_connected = False
       self.serial_monitor.disconnect()
+      self.set_enabled_buttons(False)
       self.connect_button.setText("Connect")
   
   def add_AT_ui(self):
@@ -81,6 +84,13 @@ class ATConfigurator(Ui_MainWindow):
   def command_history_down(self):
     self.index_history = min(self.index_history + 1, 0)
     self.serial_lineEdit.setText(self.serial_history[self.index_history])
+  
+  def set_enabled_buttons(self, enabled):
+    self.read_button.setEnabled(enabled)
+    self.at_button.setEnabled(enabled)
+    self.atw_button.setEnabled(enabled)
+    for command_widget in self.command_widgets:
+      command_widget.set_enabled_buttons(enabled)
     
   def parse(self, filename):
     with open(filename, 'r') as f:

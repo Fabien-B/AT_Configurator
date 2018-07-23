@@ -73,7 +73,6 @@ class SerialMonitor():
       first = strings[0]
       self.read_buffer = strings[1]
       for reg in self.regexes:
-        print(reg.regex, first)
         matches = re.match(reg.regex, first)  #TODO compile regexes
         if matches is not None:
           reg.callback(*matches.groups())

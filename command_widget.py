@@ -41,4 +41,7 @@ class CommandWidget(QtWidgets.QWidget):
       self.ui.label_current_value.setText(description)
     except IndexError as e:
       print(len(args), e)
-      
+  
+  def set_enabled_buttons(self, enabled):
+    self.ui.write_button.setEnabled(enabled)
+    self.ui.refresh_button.setEnabled(enabled)
