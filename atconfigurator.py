@@ -32,6 +32,7 @@ class ATConfigurator(Ui_MainWindow):
     self.filter = Filter(self.serial_lineEdit, self.command_history_up, self.command_history_down)
     self.serial_lineEdit.installEventFilter(self.filter)
     self.connect_button.clicked.connect(self.connect_serial)
+    self.read_button.clicked.connect(self.at_read_all)
   
   def connect_serial(self):
     if self.serial_connected is False:
@@ -59,6 +60,10 @@ class ATConfigurator(Ui_MainWindow):
       
   def at_write(self):
     self.serial_monitor.write("AT&W\r\n")
+  
+  def at_read_all(self):
+    for command_widget in self.command_widgets:
+      command_widget.refresh_value()
   
   def write_line_to_serial(self):
     text = self.serial_lineEdit.text()
