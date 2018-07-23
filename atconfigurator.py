@@ -3,7 +3,7 @@ import json
 from collections import namedtuple
 from command import Command
 import serial
-from command_widget import CommandWidget
+from value_command_widget import ValueCommandWidget
 from ui.configurator_ui import Ui_MainWindow
 from serial_monitor import SerialMonitor
 import traceback
@@ -54,7 +54,7 @@ class ATConfigurator(Ui_MainWindow):
   
   def add_AT_ui(self):
     for command in self.commands:
-      command_widget = CommandWidget(command, self.serial_monitor)
+      command_widget = ValueCommandWidget(command, self.serial_monitor)
       self.command_widgets.append(command_widget)
       self.verticalLayout.insertWidget(self.verticalLayout.count()-1, command_widget)
 
