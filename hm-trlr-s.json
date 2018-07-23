@@ -6,7 +6,7 @@
       "title": "Set UART BaudRate",
       "description": "controller communication speed. Take effect immediately.",
       "AT_read": "AT+SPR=?\r\n",
-      "read_response": "+SPR:.",
+      "read_response": "\\+SPR:(.)",
       "AT_write": "AT+SPR={}\r\n",
       "write_response": "OK",
       "parameter": [
@@ -27,6 +27,7 @@
       "title": "Transmit power",
       "description": "Set transmit power of the module.",
       "AT_read": "AT+POWER=?\r\n",
+      "read_response":"\\+POWER:(.)",
       "AT_write": "AT+POWER={}\r\n",
       "parameter": [
         {"value": "0", "description": "20dbm"},
@@ -40,7 +41,7 @@
       "title": "Channel select",
       "description": "Change channel. 16 channels are possible, modules must share the same channel.",
       "AT_read": "AT+CS=?\r\n",
-      "read_response":"+CS:.",
+      "read_response":"\\+CS:(.)",
       "AT_write": "AT+CS={}\r\n",
       "write_response": "OK",
       "parameter": [
@@ -67,6 +68,7 @@
       "title": "CRC enabled/disabled",
       "description": "In LORA mode, enable or disable CRC function.",
       "AT_read": "AT+LRCRC=?\r\n",
+      "read_response":"\\+LRCRC:(.)",
       "AT_write": "AT+LRCRC={}\r\n",
       "parameter": [
         {"value": "0", "description": "disable CRC function"},
