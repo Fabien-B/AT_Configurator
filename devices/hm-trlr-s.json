@@ -1,6 +1,7 @@
 {
   "name": "HM-TRLR-S-433",
   "at_failure":"ERROR:[0-2]",
+  "write_response": "OK",
   "commands": [
     {
       "title": "Set UART BaudRate",
@@ -8,7 +9,6 @@
       "AT_read": "AT+SPR=?\r\n",
       "read_response": "\\+SPR:(.)",
       "AT_write": "AT+SPR={}\r\n",
-      "write_response": "OK",
       "parameter": [
         {"value": "0", "description": "1200bps"},
         {"value": "1", "description": "2400bps"},
@@ -21,7 +21,7 @@
         {"value": "8", "description": "57600bps"},
         {"value": "9", "description": "115200bps"}
       ],
-      "default": "0"
+      "default": "3"
     },
     {
       "title": "Transmit power",
@@ -43,7 +43,6 @@
       "AT_read": "AT+CS=?\r\n",
       "read_response":"\\+CS:(.)",
       "AT_write": "AT+CS={}\r\n",
-      "write_response": "OK",
       "parameter": [
         {"value": "0", "description": "channel 0"},
         {"value": "1", "description": "channel 1"},
@@ -62,7 +61,7 @@
         {"value": "E", "description": "channel E"},
         {"value": "F", "description": "channel F"}
       ],
-      "default": "0"
+      "default": "8"
     },
     {
       "title": "CRC enabled/disabled",
@@ -73,6 +72,121 @@
       "parameter": [
         {"value": "0", "description": "disable CRC function"},
         {"value": "1", "description": "enable CRC function"}
+      ],
+      "default": "1"
+    },
+    {
+      "title": "LoRa signal Band Width",
+      "description": "In the LoRa mode, According to the demand to set signal band width. The larger this value, then Wireless rate is faster.",
+      "AT_read": "AT+LRSBW=?\r\n",
+      "read_response":"\\+LRSBW:(.)",
+      "AT_write": "AT+LRSBW={}\r\n",
+      "parameter": [
+        {"value": "6", "description": "62.5KHz"},
+        {"value": "7", "description": "125KHz"},
+        {"value": "8", "description": "250KHz"},
+        {"value": "9", "description": "500KHz"}
+      ],
+      "default": "7"
+    },
+    {
+      "title": "LoRa spreading factor",
+      "description": "In the LoRa mode, set the spreading factor. larger value means higher sensitivity but slower wireless rate.",
+      "AT_read": "AT+LRSF=?\r\n",
+      "read_response":"\\+LRSF:(.)",
+      "AT_write": "AT+LRSF={}\r\n",
+      "parameter": [
+        {"value": "7", "description": "SF=7"},
+        {"value": "8", "description": "SF=8"},
+        {"value": "9", "description": "SF=9"},
+        {"value": "A", "description": "SF=10"},
+        {"value": "B", "description": "SF=11"},
+        {"value": "C", "description": "SF=12"}
+      ],
+      "default": "9"
+    },
+    {
+      "title": "LoRa Forward Error Correction Code",
+      "description": "In the LoRa mode, Forward Correction Error Code ???",
+      "AT_read": "AT+LRCR=?\r\n",
+      "read_response":"\\+LRCR:(.)",
+      "AT_write": "AT+LRCR={}\r\n",
+      "parameter": [
+        {"value": "0", "description": "CR4/5"},
+        {"value": "1", "description": "CR4/6"},
+        {"value": "2", "description": "CR4/7"},
+        {"value": "3", "description": "CR4/8"}
+      ],
+      "default": "0"
+    },
+    {
+      "title": "LoRa hopping enable command",
+      "description": "In the LoRa mode, frequency hopping. Note : when SBW=500 and SF=7, FHSS is disabled.",
+      "AT_read": "AT+LRHF=?\r\n",
+      "read_response":"\\+LRHF:(.)",
+      "AT_write": "AT+LRHF={}\r\n",
+      "parameter": [
+        {"value": "0", "description": "disable FHSS function"},
+        {"value": "1", "description": "enable FHSS function"}
+      ],
+      "default": "0"
+    },
+    {
+      "title": "LoRa data packet Length",
+      "description": "In the LoRa mode, set the length of data packet. Suggest more than 16.",
+      "AT_read": "AT+LRPL=?\r\n",
+      "read_response":"\\+LRPL:([0-9]+)",
+      "AT_write": "AT+LRPL={}\r\n",
+      "parameter": [
+        {"value": "32", "description": "32"},
+        {"value": "42", "description": "42"},
+        {"value": "64", "description": "64"},
+        {"value": "127", "description": "127"}
+      ],
+      "default": "32"
+    },
+    {
+      "title": "LoRa hopping period",
+      "description": "In the LoRa mode, set the hopping period.",
+      "AT_read": "AT+LRHPV=?\r\n",
+      "read_response":"\\+LRHPV:([0-9]+)",
+      "AT_write": "AT+LRHPV={}\r\n",
+      "parameter": [
+        {"value": "5", "description": "5"},
+        {"value": "10", "description": "10"},
+        {"value": "20", "description": "20"},
+        {"value": "42", "description": "42"},
+        {"value": "255", "description": "255"}
+      ],
+      "default": "10"
+    },
+    {
+      "title": "LoRa Frequency Step Value",
+      "description": "In the LoRa mode, set the frequency step value.",
+      "AT_read": "AT+LRFSV=?\r\n",
+      "read_response":"\\+LRFSV:([0-9]+)",
+      "AT_write": "AT+LRFSV={}\r\n",
+      "parameter": [
+        {"value": "0", "description": "0"},
+        {"value": "255", "description": "255"},
+        {"value": "512", "description": "512"},
+        {"value": "1638", "description": "1638"},
+        {"value": "4242", "description": "4242"},
+        {"value": "65535", "description": "65535"}
+      ],
+      "default": "10"
+    },
+    {
+      "title": "Modulation mode",
+      "description": "The modulation of HM-TRLR can be changed. In OOK mode, the baudrate should not exceed 9600 bps.",
+      "AT_read": "AT+MODE=?\r\n",
+      "read_response":"\\+MODE:(.)",
+      "AT_write": "AT+MODE={}\r\n",
+      "parameter": [
+        {"value": "0", "description": "LoRa Mode"},
+        {"value": "1", "description": "OOK Mode"},
+        {"value": "2", "description": "FSK Mode"},
+        {"value": "3", "description": "GFSK Mode"}
       ],
       "default": "0"
     }
