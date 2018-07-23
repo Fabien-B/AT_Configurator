@@ -45,6 +45,7 @@ class ATConfigurator(Ui_MainWindow):
         except serial.serialutil.SerialException as e:
           print(e)
     else:
+      self.serial_connected = False
       self.serial_monitor.disconnect()
       self.connect_button.setText("Connect")
   
