@@ -7,6 +7,7 @@ def main():
   app = QtWidgets.QApplication(sys.argv)
   MainWindow = QtWidgets.QMainWindow()
   configurator = atconfigurator.ATConfigurator('hm-trlr-s.json')
+  app.aboutToQuit.connect(configurator.closing)
   configurator.setupUi(MainWindow)
   configurator.built()
   MainWindow.show()

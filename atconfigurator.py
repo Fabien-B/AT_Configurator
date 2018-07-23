@@ -96,6 +96,9 @@ class ATConfigurator(Ui_MainWindow):
           command.params.append(param)
         self.commands.append(command)
       return data
+    
+  def closing(self):
+    self.serial_monitor.disconnect()
 
 class Filter(QtCore.QObject):
   def __init__(self, widget, up_callback, down_callback):
