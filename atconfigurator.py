@@ -18,9 +18,10 @@ class ATConfigurator(Ui_MainWindow):
     self.filter = None
     self.serial_history = [""]    # contains the history of the hand typed commands
     self.index_history = 0
+    self.serial_connected = False
   
   def built(self):
-    self.serial_monitor = SerialMonitor("", 42, self.serial_textEdit)
+    self.serial_monitor = SerialMonitor(self.serial_textEdit)
     self.device_label.setText(self.data["name"])
     self.add_AT_ui()
     self.at_button.clicked.connect(self.at_ping)
@@ -29,6 +30,21 @@ class ATConfigurator(Ui_MainWindow):
     self.crlf_comboBox.currentIndexChanged.connect(self.serial_monitor.change_ending)
     self.filter = Filter(self.serial_lineEdit, self.command_history_up, self.command_history_down)
     self.serial_lineEdit.installEventFilter(self.filter)
+    self.connect_button.clicked.connect(self.connect_serial)
+  
+  def connect_serial(self):
+    if self.serial_connected is False:
+        port = self.port_lineEdit.text()
+        bauds = int(self.bauds_lineEdit.text())
+        try:
+          self.serial_monitor.connect(port, bauds)
+          self.serial_connected = True
+          self.connect_button.setText("Disconnect")
+        except serial.serialutil.SerialException as e:
+          print(e)
+    else:
+      self.serial_monitor.disconnect()
+      self.connect_button.setText("Connect")
   
   def add_AT_ui(self):
     for command in self.commands:

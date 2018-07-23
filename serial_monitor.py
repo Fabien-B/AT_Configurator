@@ -1,10 +1,18 @@
 import serial
 
 class SerialMonitor():
-  def __init__(self, port, baud, serial_textEdit):
-    #self.ser = serial.Serial(port, baud)
+  def __init__(self, serial_textEdit):
+    self.ser = None
     self.ending = ""
     self.serial_textEdit = serial_textEdit
+  def connect(self, port, baud):
+    self.ser = serial.Serial(port, baud)
+    self.serial_timer.start()
+  
+  def disconnect(self):
+    self.serial_timer.stop()
+    self.ser.close()
+    self.ser = None
   
   def write(self, string):
     self.serial_textEdit.append(">>>" + string)  #TODO faire en bien
