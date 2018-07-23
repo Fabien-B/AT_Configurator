@@ -84,11 +84,12 @@ class ATConfigurator(Ui_MainWindow):
         exit(-1)
       for com in data["commands"]:
         command = Command()
-        command.title = com["title"]
-        command.description = com["description"]
-        command.AT_read = com["AT_read"]
-        command.AT_write = com["AT_write"]
-        command.default = com["default"]
+        command.title = com.get("title")
+        command.description = com.get("description")
+        command.AT_read = com.get("AT_read")
+        command.AT_write = com.get("AT_write")
+        command.default = com.get("default", "")
+        command.read_response = com.get("read_response", "")
         for choice in com["parameter"]:
           param = Command.Param(value=choice["value"], description=choice["description"])
           command.params.append(param)
