@@ -16,6 +16,7 @@ class CommandWidget(QtWidgets.QWidget):
       self.ui.comboBox.addItem(text)
     self.ui.write_button.clicked.connect(self.write_value)
     self.ui.refresh_button.clicked.connect(self.refresh_value)
+    serial_monitor.register_regex(self.command.read_response, self.update_value)
   
   def write_value(self):
     choosen_index = self.ui.comboBox.currentIndex()
@@ -28,4 +29,11 @@ class CommandWidget(QtWidgets.QWidget):
   def refresh_value(self):
     if self.serial_monitor is not None:
       self.serial_monitor.write(self.command.AT_read)
+  
+  def update_value(self, *args):
+    try:
+      value = args[0]
+      self.ui.label_current_value.setText(value) #TODO : get description instead of value
+    except IndexError as e:
+      print(len(args), e)
       
