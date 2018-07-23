@@ -10,6 +10,7 @@ class Command:
     self.description = ""
     self.AT_read = ""
     self.AT_write = ""
+    self.read_response = ""
     self.params = []
     self.default = None
   
