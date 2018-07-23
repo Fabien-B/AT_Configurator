@@ -18,13 +18,14 @@ class SerialMonitor():
   
   def disconnect(self):
     self.serial_timer.stop()
-    self.ser.close()
-    self.ser = None
+    if self.ser is not None:
+      self.ser.close()
+      self.ser = None
   
   def write(self, string):
     if self.ser is not None:
         self.serial_mutex.lock()
-        self.serial_textEdit.insertPlainText("\n>>>" + string + "\n")  #TODO faire en bien
+        self.serial_textEdit.insertPlainText("\n>>>" + string + "\n")
         self.serial_textEdit.moveCursor(QtGui.QTextCursor.End)
         self.ser.write(string.encode())
         self.serial_mutex.unlock()
