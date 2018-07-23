@@ -1,11 +1,14 @@
 {
   "name": "HM-TRLR-S-433",
+  "at_failure":"ERROR:[0-2]",
   "commands": [
     {
       "title": "Set UART BaudRate",
       "description": "controller communication speed. Take effect immediately.",
       "AT_read": "AT+SPR=?\r\n",
+      "read_response": "+SPR:.",
       "AT_write": "AT+SPR={}\r\n",
+      "write_response": "OK",
       "parameter": [
         {"value": "0", "description": "1200bps"},
         {"value": "1", "description": "2400bps"},
@@ -37,7 +40,9 @@
       "title": "Channel select",
       "description": "Change channel. 16 channels are possible, modules must share the same channel.",
       "AT_read": "AT+CS=?\r\n",
+      "read_response":"+CS:.",
       "AT_write": "AT+CS={}\r\n",
+      "write_response": "OK",
       "parameter": [
         {"value": "0", "description": "channel 0"},
         {"value": "1", "description": "channel 1"},
